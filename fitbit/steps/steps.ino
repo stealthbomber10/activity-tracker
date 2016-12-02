@@ -70,8 +70,8 @@ void loop() {
       sendError("YOU ARE OUT OF CONTROL");
     }
     else {
-      //sendAccelData(accelx, 'x');
-      //sendAccelData(accely, 'y');
+      sendAccelData(accelx, 'x');
+      sendAccelData(accely, 'y');
       sendAccelData(accelz, 'z');
       sendTimestamp(millis());
       sendSteps();
@@ -79,7 +79,7 @@ void loop() {
     while (!digitalRead(PEDO_PIN)) {
       sendReset();
     }
-    //amountOfSleep = 0;
+    
     sendConvertedTemp(currentConvertedTemp);
     if (!digitalRead(SLEEP_PIN)) {
       unsigned long startTime = millis();
@@ -90,8 +90,8 @@ void loop() {
         accelx = accel.cx;
         accely = accel.cy;
         accelz = accel.cz;
-        //sendAccelData(accelx, 'x');
-        //sendAccelData(accely, 'y');
+        sendAccelData(accelx, 'x');
+        sendAccelData(accely, 'y');
         sendAccelData(accelz, 'z');
         sendTimestamp(millis());
         while (accelMag() > SLEEP_THRESHOLD) {
@@ -99,8 +99,8 @@ void loop() {
           accelx = accel.cx;
           accely = accel.cy;
           accelz = accel.cz;
-          //sendAccelData(accelx, 'x');
-          //sendAccelData(accely, 'y');
+          sendAccelData(accelx, 'x');
+          sendAccelData(accely, 'y');
           sendAccelData(accelz, 'z');
           sendTimestamp(millis());
           sendError("YOU ARE NOT ASLEEP");
@@ -111,7 +111,7 @@ void loop() {
         sendSleepTime(amountOfSleep);
         }
       
-      //sendSleepTime(amountOfSleep);
+      sendSleepTime(amountOfSleep);
     }
   }
 }
