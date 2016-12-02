@@ -147,20 +147,20 @@ public class MsgReceiver
 	public int calcSteps() {
 		int size = accelz.size();
 		int steps = 0;
-		//UNCOMMENT IF USING CALCULATED MEAN TO MEASURE PEAKS (IS MORE VOLATILE)
-//		float mean = 0;
-//		float sum = 0;
-//		if (size < 3) {
-//			return 0;
-//		}
-//		for (int i = 0; i < size; i++) {
-//			sum += accelz.get(i);
-//		}
-//		mean = sum / size;
+		//COMMENT OUT IF USING PRE-SET MEAN TO MEASURE PEAKS (POTENTIALLY MORE ACCCURATE, BUT MORE VOLATILE)
+		float mean = 0;
+		float sum = 0;
+		if (size < 3) {
+			return 0;
+		}
+		for (int i = 0; i < size; i++) {
+			sum += accelz.get(i);
+		}
+		mean = sum / size;
 		for (int i = 1; i < size - 1; i++) {
 			if ((accelz.get(i) > accelz.get(i - 1))
 					&& (accelz.get(i) > accelz.get(i + 1))
-					&& (accelz.get(i) > ACCEL_THRESHOLD)) {
+					&& (accelz.get(i) > mean)) {		//Put ACCEL_THRESHOLD in place of mean if using pre-set determination
 				steps += 1;
 			}
 		}
