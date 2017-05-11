@@ -1,3 +1,3 @@
 # fitbit
 
-Simple Fitbit with an SparkFun arduino, displays data on PC when plugged in. Uses Freescale accelerometer Arduino library.
+Actvitiy tracker with a SparkFun arduino, displays data on PC when plugged in. Uses Freescale accelerometer Arduino library.
